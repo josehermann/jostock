@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {% if editMode %}
+        Modifier
+    {% else %}
+        Ajouter
+    {% endif %}
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container my-3 p-4 w-50 border border-primary" >
+<h1 class="text-center my-4 p-4 bg-black text-white">
+    {% if editMode %}
+        Modifier
+    {% else %}
+        Ajouter un
+    {% endif %}
+    Employé</h1>
+   
+        {{ form_start(formEmployes)}}
+            
+            {{ form_row(formEmployes.prenom)}}
+            {{ form_row(formEmployes.nom)}}
+            {{ form_row(formEmployes.telephone)}}
+            {{ form_row(formEmployes.email)}}
+            {{ form_row(formEmployes.adresse)}}
+            {{ form_row(formEmployes.poste)}}
+            {{ form_row(formEmployes.salaire)}}
+            {{ form_row(formEmployes.date_de_naissance) }}
+            <button class="text-center btn btn-success">Créer ce compte</button>
+        {{ form_end(formEmployes)}}
+    </div>
+
+
+{% endblock %}

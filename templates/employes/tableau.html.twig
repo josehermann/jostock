@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Fichier employés{% endblock %}
+
+{% block body %}
+<div class="container">
+<table class="table table-dark table-striped">
+<thead>
+    <tr>
+    <th>#</th>
+    <th>Prénom</th>
+    <th>nom</th>
+    <th>date de naissance</th>
+    <th>poste</th>
+    <th>salaire</th>
+    <th>option</th>
+    </tr>
+</thead>
+<tbody>
+    {% for employe in fichier %}
+        
+    <tr>
+        <td>{{ employe.id}}</td>
+        <td>{{ employe.prenom}}</td>
+        <td>{{ employe.nom}}</td>
+        <td>{{ employe.dateDeNaissance|date('d/m/Y à H:i:s') }}</td>
+        <td>{{ employe.poste}}</td>
+        <td>{{ employe.salaire}}</td>
+        <td>
+            <a href="{{ path('tableau', {id: employe.id} )}}" class="text-warning "><i class="bi bi-brush-fill"></i></a>
+            <a href="{{ path('supprimer', {id: employe.id} )}}" class="text-danger"><i class="bi bi-basket"></i></a>
+        </td>
+    </tr>
+        {% endfor %}
+
+{% endblock %}
